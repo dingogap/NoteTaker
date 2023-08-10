@@ -11,3 +11,4 @@ I had an issue with a default htmlroute. The app only worked is the route code w
 3. Initalise & Installed NPM
 4. Added skeleton server.js - front end loads
 5. Added routes folder to hold the routes & updated server.js to reference it
+6. added skeleton index.js in routes folder
