@@ -29,4 +29,3 @@ The error is resolved - it appears this default html route has to be in the pare
 
 12. Added `post /notes` route to apis.js
 13. Added `delete /notes/:id` route to apis.js
-
