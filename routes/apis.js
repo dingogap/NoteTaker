@@ -31,4 +31,20 @@ apis.post("/notes", (req, res) => {
     res.json(noteBook);
 });
 
+// Delete Route to delete selected note
+// Read the NoteBook, filter the Deleted Note
+apis.delete("/notes/:id", (req, res) => {
+    let noteId = req.params.id.toString();
+    let noteBook = JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf8"));
+
+    // Remove deleted Note
+    noteBook = noteBook.filter((currentNote) => {
+        return currentNote.id != noteId;
+    });
+
+    // Write the noteBook to db.json and refresh notes
+    fs.writeFileSync(path.join(__dirname, "../db/db.json"), JSON.stringify(noteBook));
+    res.json(noteBook);
+});
+
 module.exports = apis;

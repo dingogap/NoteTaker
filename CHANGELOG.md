@@ -28,3 +28,5 @@ The error returns after step 10:
 The error is resolved - it appears this default html route has to be in the parent in this app. It works and index.html is the default. I'm assuming it's something to do with the way the provided index.js used by the html code.
 
 12. Added `post /notes` route to apis.js
+13. Added `delete /notes/:id` route to apis.js
+
