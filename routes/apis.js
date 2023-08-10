@@ -3,16 +3,14 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
 // Import Express.js
-
-const express = require("express");
-const path = require("path");
 const apis = require("express").Router();
+const path = require("path");
 
 // Get Route to read Notes from NoteBook
 apis.get("/notes", (req, res) => {
-    let noteBook = JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf8"));
-    console.log
-    console.log(noteBook)
+    let noteBook = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf8")
+    );
     res.json(noteBook);
 });
 
@@ -20,14 +18,17 @@ apis.get("/notes", (req, res) => {
 // Read NoteBook, Generate an Id for the wewNote & push it to NoteBook array
 apis.post("/notes", (req, res) => {
     let newNote = req.body;
-    console.log(newNote);
-    let noteBook = JSON.parse(fs.readFileSync(path.join(__dirname,"../db/db.json"), "utf8"));
-    console.log(noteBook);
+    let noteBook = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf8")
+    );
     newNote.id = uuidv4();
     noteBook.push(newNote);
 
     // Write the noteBook to db.json and refresh notes
-    fs.writeFileSync(path.join(__dirname, "../db/db.json"), JSON.stringify(noteBook));
+    fs.writeFileSync(
+        path.join(__dirname, "../db/db.json"),
+        JSON.stringify(noteBook)
+    );
     res.json(noteBook);
 });
 
@@ -35,7 +36,9 @@ apis.post("/notes", (req, res) => {
 // Read the NoteBook, filter the Deleted Note
 apis.delete("/notes/:id", (req, res) => {
     let noteId = req.params.id.toString();
-    let noteBook = JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf8"));
+    let noteBook = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf8")
+    );
 
     // Remove deleted Note
     noteBook = noteBook.filter((currentNote) => {
@@ -43,7 +46,10 @@ apis.delete("/notes/:id", (req, res) => {
     });
 
     // Write the noteBook to db.json and refresh notes
-    fs.writeFileSync(path.join(__dirname, "../db/db.json"), JSON.stringify(noteBook));
+    fs.writeFileSync(
+        path.join(__dirname, "../db/db.json"),
+        JSON.stringify(noteBook)
+    );
     res.json(noteBook);
 });
 
