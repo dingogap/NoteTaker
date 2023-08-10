@@ -1,7 +1,7 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Express App to record Notes in a NoteBook",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +11,13 @@
   "dependencies": {
     "express": "^4.16.4",
     "uuid": "^9.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dingogap/NoteTaker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dingogap/NoteTaker/issues"
+  },
+  "homepage": "https://github.com/dingogap/NoteTaker#readme"
 }
